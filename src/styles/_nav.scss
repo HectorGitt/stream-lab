@@ -1,0 +1,73 @@
+.navContainer {
+  background-color: rgb(20, 20, 20);
+  align-content: center;
+  padding: 1rem 0rem;
+
+  .logo {
+    margin-left: 30px;
+    display: inline-flex;
+    align-items: center;
+    font-size: 14pt;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    &:hover {
+      scale: 1.1;
+    }
+    .play {
+      color: rgb(202, 24, 0);
+      background-color: aliceblue;
+      border-radius: 100%;
+      margin-right: 4px;
+    }
+  }
+  nav {
+    display: inline;
+  }
+  button {
+    padding: 8px 20px;
+    background-color: rgb(202, 0, 0);
+    border: none;
+    color: white;
+    font-size: large;
+    cursor: pointer;
+  }
+  .profile {
+    background-color: red;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    display: flex;
+    justify-content: center;
+  }
+  ul {
+    display: flex;
+    float: right;
+    align-items: center;
+    li {
+      display: flex;
+      align-items: center;
+      display: inline;
+      cursor: pointer;
+      margin-right: 2rem;
+      transition: all 0.5s ease;
+      .arrowDown {
+        transition: all 0.5s ease;
+      }
+      &:hover .arrowDown {
+        transform: rotateZ(180deg);
+      }
+    }
+  }
+  .nav ul li.active {
+    color: rgb(255, 113, 113);
+  }
+  .navLink:hover {
+    color: rgb(189, 157, 148);
+  }
+  .profile:hover,
+  .sub:hover,
+  .search:hover {
+    scale: 1.2;
+  }
+}

@@ -1,0 +1,95 @@
+.carousel {
+  position: relative;
+  overflow: hidden;
+  height: 300px;
+  width: 100%;
+  margin-bottom: 40px;
+  padding: 10px;
+  &:hover .left,
+  &:hover .right {
+    scale: 1;
+  }
+  .movies {
+    display: flex;
+    margin: 10px 0px;
+    position: relative;
+    transform: translateX(0%);
+    transition: all 0.5s ease;
+    .movie {
+      width: 25vw;
+      margin: 20px;
+      .cover {
+        position: relative;
+        width: 21vw;
+        transition: all 0.5s ease;
+        &:hover {
+          scale: 1.1;
+        }
+        &:hover .cover-play {
+          display: block;
+        }
+        .action {
+          display: flex;
+          position: absolute;
+          bottom: 10%;
+          right: 0;
+          width: 50%;
+          justify-content: space-around;
+          & > * {
+            cursor: pointer;
+          }
+        }
+      }
+      .cover-play {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 3;
+        color: red;
+        background-color: antiquewhite;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+    }
+    .details {
+      margin-top: 3%;
+      display: flex;
+      justify-content: space-between;
+      width: 60%;
+      font-size: 0.8rem;
+      .genre {
+        display: flex;
+        .dot {
+          scale: 0.5;
+        }
+        p {
+          color: rgb(255, 46, 46);
+          margin-left: 10px;
+        }
+      }
+    }
+    img.cover-img {
+      width: 100%;
+    }
+  }
+  .like {
+    transition: all 0.5s ease;
+  }
+  .like:hover {
+    scale: 1.2;
+  }
+  .left,
+  .right {
+    scale: 0;
+    transition: all 0.5s ease;
+    position: absolute;
+    top: 40%;
+    z-index: 2;
+    cursor: pointer;
+  }
+  .right {
+    right: 0;
+  }
+}

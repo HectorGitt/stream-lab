@@ -1,0 +1,35 @@
+.bannerCont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  h1 {
+    position: absolute;
+    top: 6%;
+    line-height: 4rem;
+    font-size: 4rem;
+    left: 10%;
+    width: 60%;
+    font-family: initial;
+  }
+
+  .banner {
+    position: relative;
+    padding: 20px;
+    width: 90%;
+  }
+  img {
+    width: 100%;
+    border-left: 2px solid red;
+  }
+  .iconCont {
+    background-color: red;
+    padding: 5px 8px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 3;
+    cursor: pointer;
+  }
+}

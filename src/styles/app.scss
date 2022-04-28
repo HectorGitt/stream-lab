@@ -1,0 +1,19 @@
+body {
+  background-color: black;
+  color: rgb(255, 242, 242);
+  user-select: none;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+
+  overflow-y: hidden;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@import "./nav";
+@import "./movieslide";
+@import "./banner";
+@import "./modal";
