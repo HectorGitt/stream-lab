@@ -36,10 +36,14 @@
       height: 50px;
       margin-right: 10px;
       padding: 15px;
-      border: 1px solid rgb(0, 0, 0);
+      border: 1px solid rgb(163, 163, 163);
       border-radius: 50%;
-      color: rgb(255, 255, 255);
-      box-shadow: 0px 0px 10px rgb(163, 163, 163) inset;
+      color: rgb(223, 223, 223);
+      box-shadow: 0px 0px 10px rgb(221, 221, 221) inset;
+      transition: all linear 200ms;
+      &:hover {
+        scale: 1.2;
+      }
     }
   }
 }
