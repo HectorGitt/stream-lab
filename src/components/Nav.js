@@ -5,21 +5,27 @@ import {
   faUser,
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const Nav = () => {
+  const {currentUser} = useAuth();
+  console.log(currentUser);
   return (
     <header className="navContainer">
-      <div className="logo">
-        <FontAwesomeIcon size="2x" className="play" icon={faPlayCircle} />
-        <span>STREAMLAB</span>
+      <div className="logoCont">
+        <Link to="/" className="logo link">
+          <FontAwesomeIcon size="2x" className="play" icon={faPlayCircle} />
+          <span>STREAMLAB</span>
+        </Link>
       </div>
       <nav className="nav">
         <ul>
           <li className="active navLink">
             Home <FontAwesomeIcon className="arrowDown" icon={faAngleDown} />
           </li>
-          <li className="navLink">
-            Movies <FontAwesomeIcon className="arrowDown" icon={faAngleDown} />
+          <li className="navLink ">
+            <Link to="/movies" className="link">Movies <FontAwesomeIcon className="arrowDown" icon={faAngleDown} /></Link>
           </li>
           <li className="navLink">
             Tv Shows{" "}
@@ -34,8 +40,13 @@ const Nav = () => {
           <li className="search">
             <FontAwesomeIcon icon={faSearch} />
           </li>
+          {currentUser && currentUser.email}
           <li className="profile">
-            <FontAwesomeIcon icon={faUser} />
+          
+            <Link to="/login" className="link">
+              
+              <FontAwesomeIcon icon={faUser} />
+            </Link>
           </li>
           <li className="sub">
             <button>SUBSCRIBE</button>
