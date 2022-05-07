@@ -1,0 +1,49 @@
+.login::after, .signup::after {
+    @include hero_pseudo;
+    background-image: url("../cover/nasa.jpg") ;
+    transition:all 1000ms;
+    filter: blur(0.3em);    
+}
+.login:hover::after {
+    filter: blur(1em);
+    
+}
+.login form, .signup form {
+    position: relative;
+    @include hero_content;
+    transition:all 1000ms;
+    background-color: rgb(7, 19, 39);
+    padding: 30px;
+    width: 95%;
+    min-height: 300px;
+    max-width: 500px;
+    input {
+        display: block;
+        width: 100%;
+        padding: 8px;
+        background-color: rgb(175, 175, 175);
+        margin: 10px 0;
+    }
+    button {
+        width: 100%;
+        background-color: black;
+        padding: 7px;
+        font-size: 1.5em;
+        color: white;
+        margin-top: 10px;
+
+    }
+    p {
+        text-align: center;
+        margin-top:10px ;
+    }
+    .icon_header {
+        position: absolute;
+        top: -10%; left: 48%;
+        transform: scale(5);
+        background-color: rgb(7, 19, 39);
+        padding: 0.8% 1%;
+        border-radius: 50%;
+
+    }
+}
