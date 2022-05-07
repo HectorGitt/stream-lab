@@ -10,7 +10,6 @@ import { useAuth } from "../context/AuthContext";
 
 const Nav = () => {
   const {currentUser} = useAuth();
-  console.log(currentUser);
   return (
     <header className="navContainer">
       <div className="logoCont">
