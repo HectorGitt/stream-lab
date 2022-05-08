@@ -39,7 +39,7 @@ const Nav = () => {
           <li className="search">
             <FontAwesomeIcon icon={faSearch} />
           </li>
-          {currentUser && currentUser?.email}
+          {currentUser?.email && currentUser?.email}
           <li className="profile">
           
             <Link to="/login" className="link">
