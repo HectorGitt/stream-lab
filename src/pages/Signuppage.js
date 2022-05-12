@@ -24,8 +24,8 @@ const Signuppage = () => {
             setLoading(true)
             await signup(emailRef.current.value, passwordRef.current.value);
             navigate('/login');
-        } catch {
-            setError('Network Error');
+        } catch(error) {
+            setError(error?.message);
         }
         setLoading(false)
     }

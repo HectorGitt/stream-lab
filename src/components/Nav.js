@@ -7,9 +7,23 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { useState } from "react";
 
 const Nav = () => {
   const {currentUser} = useAuth();
+  const [error, setError] = useState('');
+  const {logout} = useAuth();
+
+  const handleLogout = async () => {
+    setError('');
+    try {
+      await logout();
+    } catch (error) {
+      setError(error);
+    }
+    logout();
+  }
+
   return (
     <header className="navContainer">
       <div className="logoCont">
@@ -20,8 +34,8 @@ const Nav = () => {
       </div>
       <nav className="nav">
         <ul>
-          <li className="active navLink">
-            Home <FontAwesomeIcon className="arrowDown" icon={faAngleDown} />
+          <li onClick={handleLogout} className="active navLink">
+            Home {error && error} <FontAwesomeIcon className="arrowDown" icon={faAngleDown} />
           </li>
           <li className="navLink ">
             <Link to="/movies" className="link">Movies <FontAwesomeIcon className="arrowDown" icon={faAngleDown} /></Link>
@@ -39,7 +53,7 @@ const Nav = () => {
           <li className="search">
             <FontAwesomeIcon icon={faSearch} />
           </li>
-          {currentUser?.email && currentUser?.email}
+          {currentUser && currentUser?.email}
           <li className="profile">
           
             <Link to="/login" className="link">
