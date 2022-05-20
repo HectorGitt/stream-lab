@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import tmdbConfig from "./config/tmdbConfig";
 import {
   faPlayCircle,
   faShareAlt,
@@ -27,15 +28,15 @@ const Movie = ({ movie, setMode, modalStat, setModalStat }) => {
           <FontAwesomeIcon icon={faShareAlt} />
           <FontAwesomeIcon icon={faPlus} />
         </div>
-        <img className="cover-img" src={movie.cover} alt="" />
+        <img className="cover-img" src={tmdbConfig.originalImage(movie.backdrop_path)} alt="" />
       </div>
 
-      <h3 className="name">{movie.name}</h3>
+      <h3 className="name">{movie.title}</h3>
       <div className="details">
-        <p className="duration">{movie.duration}</p>
+        <p className="duration">{movie.release_date}</p>
         <div className="genre">
           <FontAwesomeIcon className="dot" icon={faCircle} />
-          <p>{movie.genre}</p>
+          <p>{movie.vote_average}</p>
         </div>
       </div>
     </div>
