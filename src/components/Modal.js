@@ -5,7 +5,7 @@ import {
   faAngleLeft,
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
-
+import tmdbConfig from "./config/tmdbConfig";
 const Modal = ({ Mode, setModalStat, modalStat, setMode }) => {
   if (Mode) {
     const toggle = () => {
@@ -18,7 +18,7 @@ const Modal = ({ Mode, setModalStat, modalStat, setMode }) => {
         <div className="modalCase">
           <FontAwesomeIcon className="times" onClick={toggle} icon={faTimes} />
           <div className="modalCover">
-            <img src={Mode.cover} alt="" />
+            <img src={tmdbConfig.originalImage(Mode.backdrop_path)} alt="" />
           </div>
           <div className="modalControl">
             <FontAwesomeIcon size="2x" icon={faAngleLeft} />
@@ -27,9 +27,12 @@ const Modal = ({ Mode, setModalStat, modalStat, setMode }) => {
           </div>
           <h3 className="modalName">{Mode.name}</h3>
           <div className="modalDetails">
-            <p className="modalDuration">{Mode.duration}</p>
-            <p className="modalGenre">{Mode.genre}</p>
+            <p className="modalDuration">{Mode.release_date}</p>
+            <p className="modalGenre">Vote: {Mode.vote_average} / 10</p>
+
+            
           </div>
+          <p className="movieOverview">{Mode.overview}</p>
         </div>
       </div>
     );
