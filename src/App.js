@@ -9,23 +9,26 @@ import ForgotPassword from "./pages/ForgotPassword";
 import "./styles/app.scss";
 import Signuppage from "./pages/Signuppage";
 import AuthProvider  from "./context/AuthContext";
+import { MoviesProvider } from "./context/MoviesContext";
 function App() {
   
   return (
     <div className="App">
       <AuthProvider>
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/movies" element={
-            <PrivateRoute>
-              <Moviepage />
-            </PrivateRoute>
-          } />
-          <Route path="/login" element={<Loginpage />} />
-          <Route path="/signup" element={<Signuppage/>} />
-          <Route path="forgot-password" element={<ForgotPassword />} />
-          
-        </Routes>
+        <MoviesProvider>
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/movies" element={
+              <PrivateRoute>
+                <Moviepage />
+              </PrivateRoute>
+            } />
+            <Route path="/login" element={<Loginpage />} />
+            <Route path="/signup" element={<Signuppage/>} />
+            <Route path="forgot-password" element={<ForgotPassword />} />
+            
+          </Routes>
+        </MoviesProvider>
       </AuthProvider>
     </div>
   );
