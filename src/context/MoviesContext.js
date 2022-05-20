@@ -1,4 +1,4 @@
-import {createContext, useContext, useState} from 'react';
+import {createContext, useContext, useState, useEffect} from 'react';
 import axiosClient from '../components/config/axiosClient';
 //get movies from tmdb api  https://developers.themoviedb.org/3/getting-started/introduction
 
@@ -63,12 +63,19 @@ export const MoviesProvider = ({children}) => {
     const fetchMovies = async () => {
         const params = {page: 1}
         try {
-            const response = await tmdbApi.getMoviesList(movieType.popular, {params})
-            setMovies(response.results)
+            await tmdbApi.getMoviesList(movieType.popular, {params}).then((response) => {
+                setMovies(response.results)
+                
+            })
+            
         } catch (error) {
             console.log(error);
         }
     }
+    useEffect(() => {
+        fetchMovies();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, [])
 
     const value = {
         fetchMovies,
