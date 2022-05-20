@@ -13,10 +13,8 @@ const Moviepage = () => {
     const [Cover] = useState(data());
     const [Mode, setMode] = useState(Cover[0]);
     const [modalStat, setModalStat] = useState(false);
-    const {fetchMovies,movies} = useTmdbApi();
+    const {movies} = useTmdbApi();
     useEffect(() => {
-      fetchMovies();
-      console.log(movies)
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     
@@ -24,12 +22,12 @@ const Moviepage = () => {
     return (
         <div>
             <Nav />
-            <Movieslide
+            {movies && <Movieslide
                 modalStat={modalStat}
                 setModalStat={setModalStat}
                 setMode={setMode}
-                Cover={Cover}
-            />
+                Cover={movies}
+            />}
             <Modal
                 Mode={Mode}
                 modalStat={modalStat}
