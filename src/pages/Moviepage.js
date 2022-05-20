@@ -1,20 +1,25 @@
-import { useState } from "react";
-
-
+import { useState, useEffect } from "react";
 //import data
 import data from "../../src/data";
-
 //import components
 import Movieslide from "../components/Movieslide";
 import Nav from "../components/Nav";
 import Modal from "../components/Modal";
 import Banner from "../components/Banner";
+import { useTmdbApi } from "../context/MoviesContext";
 
 const Moviepage = () => {
     //create states
     const [Cover] = useState(data());
     const [Mode, setMode] = useState(Cover[0]);
     const [modalStat, setModalStat] = useState(false);
+    const {fetchMovies,movies} = useTmdbApi();
+    useEffect(() => {
+      fetchMovies();
+      console.log(movies)
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+    
 
     return (
         <div>
