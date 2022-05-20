@@ -31,7 +31,7 @@ const ForgotPassword = () => {
   return (
     <div className="login">
         <div>
-            <form onClick={handleSubmit} >
+            <form onSubmit={handleSubmit} >
                 <div className="icon_header"><FontAwesomeIcon icon={faUser} /></div>
                 
                 <div className="form-group">
