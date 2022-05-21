@@ -3,8 +3,10 @@ import { useRef } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+
 var position = 0;
-const Movieslide = ({ Cover, setMode, modalStat, setModalStat }) => {
+const Movieslide = ({ Cover, setMode, modalStat, setModalStat, setVideoSrc }) => {
+
   const carouselRef = useRef(null);
   const space = Math.round((Cover.length / 4) * -100);
 
@@ -33,6 +35,7 @@ const Movieslide = ({ Cover, setMode, modalStat, setModalStat }) => {
             key={movie.id}
             modalStat={modalStat}
             setModalStat={setModalStat}
+            setVideoSrc={setVideoSrc}
           />
         ))}
       </div>

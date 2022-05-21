@@ -13,6 +13,7 @@ const Moviepage = () => {
     const [Cover] = useState(data());
     const [Mode, setMode] = useState(Cover[0]);
     const [modalStat, setModalStat] = useState(false);
+    const [videoSrc, setVideoSrc] = useState('');
     const {movies} = useTmdbApi();
     useEffect(() => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -27,8 +28,11 @@ const Moviepage = () => {
                 setModalStat={setModalStat}
                 setMode={setMode}
                 Cover={movies}
+                setVideoSrc={setVideoSrc}
             />}
             <Modal
+                videoSrc={videoSrc}
+                setVideoSrc={setVideoSrc}
                 Mode={Mode}
                 modalStat={modalStat}
                 setModalStat={setModalStat}

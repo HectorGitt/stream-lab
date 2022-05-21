@@ -1,17 +1,25 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import tmdbConfig from "./config/tmdbConfig";
-import {
-  faPlayCircle,
-  faShareAlt,
-  faPlus,
-  faCircle,
-} from "@fortawesome/free-solid-svg-icons";
+import { category } from "../context/MoviesContext";
+import { tmdbApi } from "../context/MoviesContext";
+import {faPlayCircle,faShareAlt,faPlus,faCircle,} from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
-const Movie = ({ movie, setMode, modalStat, setModalStat }) => {
+const Movie = ({ movie, setMode, modalStat, setModalStat, setVideoSrc }) => {
+  const fetchVideos = async () => {
+    await tmdbApi.getVideos(category.movie, movie.id).then((res) => {
+            const videoSrc = 'https://www.youtube.com/embed/'+ res.results[0].key
+            setVideoSrc(videoSrc)
+            console.log(res.results)
+        
+    })
+    
+}
   const toggle = () => {
     if (!modalStat) {
       setMode(movie);
       setModalStat(true);
+      fetchVideos();
+      
     }
   };
   return (

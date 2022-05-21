@@ -1,16 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faPlay,
-  faAngleRight,
-  faAngleLeft,
-  faTimes,
-} from "@fortawesome/free-solid-svg-icons";
-import tmdbConfig from "./config/tmdbConfig";
-const Modal = ({ Mode, setModalStat, modalStat, setMode }) => {
+import {faPlay,faAngleRight,faAngleLeft,faTimes,} from "@fortawesome/free-solid-svg-icons";
+const Modal = ({ Mode, setModalStat, modalStat, setMode, videoSrc, setVideoSrc }) => {
   if (Mode) {
     const toggle = () => {
       if (modalStat) {
         setModalStat(false);
+        setVideoSrc("")
       }
     };
     return (
@@ -18,7 +13,8 @@ const Modal = ({ Mode, setModalStat, modalStat, setMode }) => {
         <div className="modalCase">
           <FontAwesomeIcon className="times" onClick={toggle} icon={faTimes} />
           <div className="modalCover">
-            <img src={tmdbConfig.originalImage(Mode.backdrop_path)} alt="" />
+            {/* <img src={tmdbConfig.originalImage(Mode.backdrop_path)} alt="" /> */}
+            <iframe className="iframe" title="Movie Trailer" src={videoSrc}></iframe>
           </div>
           <div className="modalControl">
             <FontAwesomeIcon size="2x" icon={faAngleLeft} />

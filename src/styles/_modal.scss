@@ -35,6 +35,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
     img {
       width: 70%;
     }
@@ -66,4 +67,9 @@
 .movieOverview {
   margin-top: 10px;
   text-align: justify;
+}
+.iframe {
+  width: 100%;
+  height: 300px;
+  
 }
