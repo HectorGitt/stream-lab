@@ -59,6 +59,7 @@ export const tmdbApi = {
 
 export const MoviesProvider = ({children}) => {
     const [movies, setMovies] = useState({});
+    const [top_rated, setTop_rated] = useState({});
 
     //fetch movies from tmdb api
     const fetchMovies = async () => {
@@ -73,9 +74,22 @@ export const MoviesProvider = ({children}) => {
             console.log(error);
         }
     }
+    const fetchTopRatedMovies = async () => {
+        const params = {page: 1}
+        try {
+            await tmdbApi.getMoviesList(movieType.top_rated, {params}).then((response) => {
+                setTop_rated(response.results)
+                
+            })
+            
+        } catch (error) {
+            console.log(error);
+        }
+    }
     
     useEffect(() => {
         fetchMovies();
+        fetchTopRatedMovies();
         // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [])
 
@@ -83,6 +97,7 @@ export const MoviesProvider = ({children}) => {
         fetchMovies,
         tmdbApi,
         movies,
+        top_rated,
     }
 
     return(
