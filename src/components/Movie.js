@@ -32,7 +32,9 @@ const Movie = ({ movie, setMode, modalStat, setModalStat, setVideoSrc }) => {
           icon={faPlayCircle}
         />
         <div className="action">
-          <FontAwesomeIcon className="like" icon={faHeart} />
+          <div className="tooltip" ><FontAwesomeIcon className="like" icon={faHeart} />
+          <span className="tooltiptext" >{movie?.vote_count}</span>
+          </div>
           <FontAwesomeIcon icon={faShareAlt} />
           <FontAwesomeIcon icon={faPlus} />
         </div>
