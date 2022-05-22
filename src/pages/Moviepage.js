@@ -1,20 +1,19 @@
 import { useState, useEffect } from "react";
 //import data
-import data from "../../src/data";
 //import components
 import Movieslide from "../components/Movieslide";
 import Nav from "../components/Nav";
 import Modal from "../components/Modal";
 import Banner from "../components/Banner";
 import { useTmdbApi } from "../context/MoviesContext";
+import MovieGrid from "../components/MovieGrid";
 
 const Moviepage = () => {
     //create states
-    const [Cover] = useState(data());
-    const [Mode, setMode] = useState(Cover[0]);
+    const [Mode, setMode] = useState('');
     const [modalStat, setModalStat] = useState(false);
     const [videoSrc, setVideoSrc] = useState('');
-    const {movies} = useTmdbApi();
+    const {movies, top_rated} = useTmdbApi();
     useEffect(() => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -38,7 +37,15 @@ const Moviepage = () => {
                 setModalStat={setModalStat}
                 setMode={setMode}
             />
-            <Banner />
+            <Banner imgId={top_rated} />
+            {movies && <MovieGrid
+                heading={'TOP RATED'}
+                modalStat={modalStat}
+                setModalStat={setModalStat}
+                setMode={setMode}
+                Cover={top_rated}
+                setVideoSrc={setVideoSrc}
+            />}
         </div>
     )
 }
