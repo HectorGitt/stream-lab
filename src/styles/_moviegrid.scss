@@ -1,0 +1,117 @@
+.grid {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    margin-bottom: 40px;
+    padding: 10px 0;
+    .heading {
+        text-align: center;
+        font-size: 3rem;
+    }
+    .movies {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 10px 0px;
+      transition: all 0.5s ease;
+      justify-content: center;
+      .movie {
+        width: 22vw;
+        margin: 1vw;
+        .cover {
+          position: relative;
+          transition: all 0.5s ease;
+          &:hover {
+            scale: 1.1;
+          }
+          &:hover .cover-play {
+            display: block;
+          }
+          .action {
+            display: flex;
+            position: absolute;
+            bottom: 10%;
+            right: 0;
+            width: 50%;
+            justify-content: space-around;
+            & > * {
+              cursor: pointer;
+            }
+          }
+        }
+        .cover-play {
+          display: none;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          z-index: 3;
+          color: red;
+          background-color: antiquewhite;
+          border-radius: 50%;
+          cursor: pointer;
+        }
+      }
+      .details {
+        margin-top: 3%;
+        display: flex;
+        justify-content: space-between;
+        width: 60%;
+        font-size: 0.8rem;
+        .genre {
+          display: flex;
+          .dot {
+            scale: 0.5;
+          }
+          p {
+            color: rgb(255, 46, 46);
+            margin-left: 10px;
+          }
+        }
+      }
+      img.cover-img {
+        width: 100%;
+      }
+    }
+    .like {
+      transition: all 0.5s ease;
+    }
+    .like:hover {
+      scale: 1.2;
+    }
+    .left,
+    .right {
+      scale: 0;
+      transition: all 0.5s ease;
+      position: absolute;
+      top: 40%;
+      z-index: 2;
+      cursor: pointer;
+    }
+    .right {
+      right: 0;
+    }
+  }
+  .tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Tooltip text */
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    padding: 0 0.2rem;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+   
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+  }
+  
+  /* Show the tooltip text when you mouse over the tooltip container */
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
