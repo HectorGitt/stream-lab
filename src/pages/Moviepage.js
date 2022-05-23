@@ -22,6 +22,7 @@ const Moviepage = () => {
     return (
         <div>
             <Nav />
+            <p className='heading-text' >Check out!</p>
             {movies && <Movieslide
                 modalStat={modalStat}
                 setModalStat={setModalStat}
