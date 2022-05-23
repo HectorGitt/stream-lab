@@ -60,6 +60,7 @@ export const tmdbApi = {
 export const MoviesProvider = ({children}) => {
     const [movies, setMovies] = useState({});
     const [top_rated, setTop_rated] = useState({});
+    const [page, setPage] = useState(1);
 
     //fetch movies from tmdb api
     const fetchMovies = async () => {
@@ -86,6 +87,21 @@ export const MoviesProvider = ({children}) => {
             console.log(error);
         }
     }
+    const fetchMore = async () => {
+        setPage((page)=> page + 1)
+        const params = {page: page}
+        try {
+            await tmdbApi.getMoviesList(movieType.top_rated, {params}).then((response) => {
+                console.log(response.results)
+                setTop_rated([...top_rated , ...response.results])
+                console.log(top_rated)
+                
+            })
+            
+        } catch (error) {
+            console.log(error);
+        }
+    }
     
     useEffect(() => {
         fetchMovies();
@@ -98,6 +114,7 @@ export const MoviesProvider = ({children}) => {
         tmdbApi,
         movies,
         top_rated,
+        fetchMore,
     }
 
     return(
