@@ -88,7 +88,7 @@ export const MoviesProvider = ({children}) => {
         }
     }
     const fetchMore = async () => {
-        setPage((page)=> page + 1)
+        setPage((page)=> page += 1)
         const params = {page: page}
         try {
             await tmdbApi.getMoviesList(movieType.top_rated, {params}).then((response) => {
