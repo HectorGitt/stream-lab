@@ -1,10 +1,14 @@
 import Movie from "./Movie";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
+import { useTmdbApi } from "../context/MoviesContext";
 
 
 const MovieGrid = ({ Cover, setMode, modalStat, setModalStat, setVideoSrc, heading }) => {
-
   const carouselRef = useRef(null);
+  const {fetchMore, top_rated} = useTmdbApi();
+  useEffect(()=> {
+
+  }, [top_rated])
   return (
     <div className="grid">
         <h2 className="heading">{heading}</h2>
@@ -20,6 +24,10 @@ const MovieGrid = ({ Cover, setMode, modalStat, setModalStat, setVideoSrc, headi
           />
         ))}
       </div>
+      <div className="button-cont">
+        <button onClick={fetchMore} className="button" >Load more</button>
+      </div>
+      
     </div>
   );
 };
