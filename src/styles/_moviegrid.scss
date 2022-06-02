@@ -26,7 +26,7 @@
       transition: all 0.5s ease;
       justify-content: center;
       .movie {
-        width: 22%;
+        flex-basis: 22%;
         min-width: 250px;
         margin: 1vw;
         .cover {

@@ -16,11 +16,11 @@
     transform: translateX(0%);
     transition: all 0.5s ease;
     .movie {
-      width: 25vw;
-      margin: 20px;
+      width: 300px;
+      margin: 20px;   
       .cover {
         position: relative;
-        width: 21vw;
+        width: 300px;
         transition: all 0.5s ease;
         &:hover {
           scale: 1.1;
