@@ -4,24 +4,16 @@ import {
   faAngleDown,
   faUser,
   faSearch,
+  faBars,
+  faTimes
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
 import { useState } from "react";
 
 const Nav = () => {
-  const {currentUser} = useAuth();
-  const [error, setError] = useState('');
-  const {logout} = useAuth();
-
-  const handleLogout = async () => {
-    setError('');
-    try {
-      await logout();
-    } catch (error) {
-      setError(error);
-    }
-    logout();
+  const [menu, setMenu] = useState(false);
+  const handleMenu = () => {
+    setMenu((init) => !init)
   }
 
   return (
@@ -33,15 +25,19 @@ const Nav = () => {
         </Link>
       </div>
       <nav className="nav">
-        <ul>
-          <li onClick={handleLogout} className="active navLink">
-            Home {error && error} <FontAwesomeIcon className="arrowDown" icon={faAngleDown} />
+        <ul className="menubar">
+          <li className="navLink "><FontAwesomeIcon onClick={handleMenu} size="2x"icon={(!menu)? faBars : faTimes} /></li>
+        </ul>
+        
+        <ul className={`nav__main ${menu? 'display':''}`}>
+          <li className="active navLink">
+            Home<FontAwesomeIcon className="arrowDown" icon={faAngleDown} />
           </li>
           <li className="navLink ">
             <Link to="/movies" className="link">Movies <FontAwesomeIcon className="arrowDown" icon={faAngleDown} /></Link>
           </li>
           <li className="navLink">
-            Tv Shows{" "}
+            Tv Shows{" "} 
             <FontAwesomeIcon className="arrowDown" icon={faAngleDown} />
           </li>
           <li className="navLink">
@@ -53,7 +49,6 @@ const Nav = () => {
           <li className="search">
             <FontAwesomeIcon icon={faSearch} />
           </li>
-          {currentUser && currentUser?.email}
           <li className="profile">
           
             <Link to="/login" className="link">
@@ -64,10 +59,6 @@ const Nav = () => {
           <li className="sub">
             <button>SUBSCRIBE</button>
           </li>
-        </ul>
-
-        <ul>
-          <li></li>
         </ul>
       </nav>
     </header>
