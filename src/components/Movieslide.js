@@ -1,14 +1,15 @@
 import Movie from "./Movie";
-import { useRef } from "react";
+import { useRef} from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
-var position = 0;
-const Movieslide = ({ Cover, setMode, modalStat, setModalStat, setVideoSrc }) => {
 
+const Movieslide = ({ Cover, setMode, modalStat, setModalStat, setVideoSrc }) => {
+  var position = 0;
   const carouselRef = useRef(null);
-  const space = Math.round((Cover.length / 4) * -100);
+  // const [space, setSpace] = useState(0)
+  const space = Math.round((Cover.length / (window.innerWidth / 300)) * -100 -50);
 
   const Swipe = (direction) => {
     if (direction === "left" && position < 0) {
@@ -18,7 +19,25 @@ const Movieslide = ({ Cover, setMode, modalStat, setModalStat, setVideoSrc }) =>
       position = position - 100;
       carouselRef.current.style.transform = `translateX(${position}%)`;
     }
-  };
+  }; 
+  /* useEffect(() => {
+    setSpace((init) => Math.round((carouselRef.current.offsetWidth )));
+    console.log(carouselRef)
+
+  }, [space])
+  
+
+  const Swipe = (direction) => {
+    if (direction === "left" && position < 0) {
+      position = position + window.innerWidth;
+      carouselRef.current.style.transform = `translateX(${position}px)`;
+      console.log(position)
+    } else if (direction === "right" && position - 100 < space) {
+      console.log(position)
+      position = position - window.innerWidth;
+      carouselRef.current.style.transform = `translateX(${position}px)`;
+    }
+  }; */
   return (
     <div className="carousel">
       <FontAwesomeIcon
